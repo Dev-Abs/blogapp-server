@@ -28,6 +28,11 @@ app.use('/', (req, res) => {
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
+
+// Listen on `port` and 0.0.0.0
+app.listen(PORT, "0.0.0.0", function () {
+  // ...
+});
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
