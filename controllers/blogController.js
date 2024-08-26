@@ -221,7 +221,12 @@ const likeBlogPost = asyncHandler(async (req, res) => {
       res.status(500).send('Server error');
     }
   };
-  
+
+  // get blogs of author by id
+const getBlogsByAuthorId = asyncHandler(async (req, res) => {
+    const blogs = await Blog.find({ author: req.params.id }).populate('author', 'name email');
+    res.json(blogs);
+  });
   
   
 
@@ -234,6 +239,7 @@ module.exports = {
     addComment,
     likeBlogPost,
     unlikeBlogPost,
-    getMyBlogs
+    getMyBlogs,
+    getBlogsByAuthorId
 }
   
